@@ -4,8 +4,8 @@ using thx.semver.Version;
 using StringTools;
 
 abstract VersionRule(VersionComparator) from VersionComparator to VersionComparator {
-  static var VERSION = ~/^(>=|<=|[v=><~^])?(\d+|[x*])(?:\.(\d+|[x*]))?(?:\.(\d+|[x*]))?(?:[-]([a-z0-9.-]+))?(?:[+]([a-z0-9.-]+))?$/i;
   @:from public static function stringToVersionRule(s : String) : VersionRule {
+    var VERSION = ~/^(>=|<=|[v=><~^])?(\d+|[x*])(?:\.(\d+|[x*]))?(?:\.(\d+|[x*]))?(?:[-]([a-z0-9.-]+))?(?:[+]([a-z0-9.-]+))?$/i;
     var ors = s.split("||").map(function(comp) {
       comp = comp.trim();
       var p = comp.split(" - ");
