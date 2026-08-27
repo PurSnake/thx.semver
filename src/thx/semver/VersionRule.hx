@@ -179,7 +179,8 @@ abstract VersionRule(VersionComparator) from VersionComparator to VersionCompara
     };
   }
 
-  @:to public function toString() : String
+  @:to public function toString() : String {
+    if (this == null) return null;
     return switch ((this : VersionComparator)) {
       case EqualVersion(ver):
         ver;
@@ -197,6 +198,7 @@ abstract VersionRule(VersionComparator) from VersionComparator to VersionCompara
       case OrRule(a, b):
         (a : VersionRule) + ' || ' + (b : VersionRule);
     };
+  }
 }
 
 enum VersionComparator {
